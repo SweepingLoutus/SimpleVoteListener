@@ -1,0 +1,13 @@
+#You can use the following placeholders in the messages
+# (player) - the player who has voted
+# (service) - the website that the vote was received from
+
+#message the user is sent when the vote is received.
+message_to_user: "Thank you, for voting for us on (service)"
+#message that is sent to the whole server when a person has voted.
+broadcast_message: "(player) has voted on (service)"
+
+
+#The command that is run by the plugin to apply the effect of the vote
+#set to none to disable
+command: "msg Sweeping_ hi"
