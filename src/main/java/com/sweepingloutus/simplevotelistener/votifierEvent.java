@@ -38,10 +38,10 @@ public class votifierEvent implements Listener {
         if (player != null) {
             String service = vote.getServiceName();
 
-            String userMessageFormatted = messageFormatter.messageFormat(message_to_user,player,service);
+            String userMessageFormatted = messageFormatter.voteMessageFormat(message_to_user,player,service);
             player.sendMessage(userMessageFormatted);
 
-            String broadcastMessageFormatted = messageFormatter.messageFormat(broadcast_message,player,service);
+            String broadcastMessageFormatted = messageFormatter.voteMessageFormat(broadcast_message,player,service);
             Bukkit.broadcastMessage(broadcastMessageFormatted);
 
             String formattedCommand = messageFormatter.placeholderFormat(command,player,service);

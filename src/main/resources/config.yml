@@ -7,7 +7,12 @@ message_to_user: "Thank you, for voting for us on (service)"
 #message that is sent to the whole server when a person has voted.
 broadcast_message: "(player) has voted on (service)"
 
+votesites:
 
 #The command that is run by the plugin to apply the effect of the vote
 #set to none to disable
-command: "msg Sweeping_ hi"
+command: "placeholder"
+
+vote_reminder: true
+reminder_message: "&9&lDon't forget to vote for us!&b&l See the vote sites by doing /vote !"
+reminder_message_hover: "&lClick here to see vote sites!"
