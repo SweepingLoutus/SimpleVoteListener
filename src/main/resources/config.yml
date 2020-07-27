@@ -8,6 +8,20 @@ message_to_user: "Thank you, for voting for us on (service)"
 broadcast_message: "(player) has voted on (service)"
 
 votesites:
+  votesite1:
+    name: "test1"
+    url: "https://google.com"
+  votesite2:
+    name: "test2"
+    url: "https://www.picselcraft.co.uk"
+  votesite3:
+    name: "test3"
+    url: "https://www.discord.com"
+  votesite4:
+    name: "test4"
+    url: "https://www.minecraft.net"
+
+
 
 #The command that is run by the plugin to apply the effect of the vote
 #set to none to disable
