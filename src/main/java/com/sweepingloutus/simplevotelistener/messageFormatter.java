@@ -16,7 +16,7 @@ public class messageFormatter {
         String replaceService = replacePlayer.replaceAll("\\(service\\)", service);
         return PlaceholderAPI.setPlaceholders(player, replaceService);
     }
-    public String MessageFormat(String message, Player player){
+    public String messageFormat(String message, Player player){
         String PlaceHolderAPI = PlaceholderAPI.setPlaceholders(player,message);
         return ChatColor.translateAlternateColorCodes('&', PlaceHolderAPI);
     }

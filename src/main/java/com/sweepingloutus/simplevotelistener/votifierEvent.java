@@ -48,7 +48,7 @@ public class votifierEvent implements Listener {
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), formattedCommand);
 
         } else {
-            logger.log(Level.INFO,username + "couldn't be found ditching vote!");
+            logger.log(Level.INFO,username + " couldn't be found ditching vote!");
         }
 
     }

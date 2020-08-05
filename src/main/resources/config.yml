@@ -3,28 +3,38 @@
 # (service) - the website that the vote was received from
 
 #message the user is sent when the vote is received.
-message_to_user: "Thank you, for voting for us on (service)"
+message_to_user: "&b&lThank you, for voting for us on (service)!"
 #message that is sent to the whole server when a person has voted.
-broadcast_message: "(player) has voted on (service)"
+broadcast_message: "&l(player) &b&lhas voted for &c&lPicsel&f&lCraft &b&lon (service)&b&l!"
 
-votesites:
-  votesite1:
-    name: "test1"
-    url: "https://google.com"
-  votesite2:
-    name: "test2"
-    url: "https://www.picselcraft.co.uk"
-  votesite3:
-    name: "test3"
-    url: "https://www.discord.com"
-  votesite4:
-    name: "test4"
-    url: "https://www.minecraft.net"
+
+voteCMD:
+  titleline: "&b&lVote Sites!"
+  votesites:
+    votesite1:
+      chattext: "&lVote Site 1 - &b&lMinecraft Server List"
+      hovertext: "&l&fClick to Open &b&lMinecraft Server List"
+      name: "Minecraft Server List"
+      url: "https://minecraft-server-list.com/server/465641/vote/"
+    votesite2:
+      chattext: "&lVote Site 2 - &b&lMinecraftServers.org"
+      hovertext: "&l&fClick to Open &b&lMinecraftServers.org"
+      name: "MinecraftServers.org"
+      url: "https://minecraftservers.org/vote/591943"
+    votesite3:
+      chattext: "&lVote Site 3 - &b&lMinecraft Multiplayer"
+      hovertext: "&l&fClick to Open &b&lMinecraft Multiplayer"
+      name: "Minecraft Multiplayer"
+      url: "https://minecraft-mp.com/server/265420/vote/"
+    votesite4:
+      chattext: "&lVote Site 4 - &b&lPlanet Minecraft"
+      hovertext: "&l&fClick to Open &b&lPlanet Minecraft"
+      name: "Planetminecraft"
+      url: "https://www.planetminecraft.com/server/picselcraft/vote/"
 
 
 
 #The command that is run by the plugin to apply the effect of the vote
-#set to none to disable
 command: "placeholder"
 
 vote_reminder: true

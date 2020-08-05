@@ -29,13 +29,13 @@ public class onPlayerJoin implements Listener {
         Player player = event.getPlayer();
 
         String reminderMessage = config.getString("reminder_message");
-        String formattedReminderMessage = messageFormatter.MessageFormat(reminderMessage,player);
+        String formattedReminderMessage = messageFormatter.messageFormat(reminderMessage,player);
 
         TextComponent finalMessage = new TextComponent (TextComponent.fromLegacyText(formattedReminderMessage));
         finalMessage.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/vote"));
 
         String reminderMessageHover = main.getConfig().getString("reminder_message_hover");
-        String formattedReminderMessageHover = messageFormatter.MessageFormat(reminderMessageHover,player);
+        String formattedReminderMessageHover = messageFormatter.messageFormat(reminderMessageHover,player);
 
         finalMessage.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,new ComponentBuilder(formattedReminderMessageHover).create()));
         player.spigot().sendMessage(finalMessage);
