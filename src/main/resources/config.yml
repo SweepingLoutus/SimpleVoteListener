@@ -17,9 +17,9 @@ voteCMD:
       name: "Minecraft Server List"
       url: "https://minecraft-server-list.com/server/465641/vote/"
     votesite2:
-      chattext: "&lVote Site 2 - &b&lMinecraftServers.org"
-      hovertext: "&l&fClick to Open &b&lMinecraftServers.org"
-      name: "MinecraftServers.org"
+      chattext: "&lVote Site 2 - &b&lMinecraftServers"
+      hovertext: "&l&fClick to Open &b&lMinecraftServers"
+      name: "MinecraftServers"
       url: "https://minecraftservers.org/vote/591943"
     votesite3:
       chattext: "&lVote Site 3 - &b&lMinecraft Multiplayer"
@@ -29,13 +29,15 @@ voteCMD:
     votesite4:
       chattext: "&lVote Site 4 - &b&lPlanet Minecraft"
       hovertext: "&l&fClick to Open &b&lPlanet Minecraft"
-      name: "Planetminecraft"
+      name: "Planet Minecraft"
       url: "https://www.planetminecraft.com/server/picselcraft/vote/"
 
 
 
 #The command that is run by the plugin to apply the effect of the vote
-command: "placeholder"
+commands:
+  - "lp user (player) permission settemp fawe.permpack.basic true 6h"
+  - "pl"
 
 vote_reminder: true
 reminder_message: "&9&lDon't forget to vote for us!&b&l See the vote sites by doing /vote !"

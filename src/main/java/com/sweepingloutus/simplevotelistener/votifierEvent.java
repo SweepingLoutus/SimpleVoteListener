@@ -9,6 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,7 +30,7 @@ public class votifierEvent implements Listener {
 
         String message_to_user = config.getString("message_to_user");
         String broadcast_message = config.getString("broadcast_message");
-        String command = config.getString("command");
+        List<String> commands = config.getStringList("commands");
 
         Vote vote = event.getVote();
         String username = vote.getUsername();
@@ -44,9 +45,10 @@ public class votifierEvent implements Listener {
             String broadcastMessageFormatted = messageFormatter.voteMessageFormat(broadcast_message,player,service);
             Bukkit.broadcastMessage(broadcastMessageFormatted);
 
-            String formattedCommand = messageFormatter.placeholderFormat(command,player,service);
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), formattedCommand);
-
+            for(String command : commands){
+                String formattedCommand = messageFormatter.placeholderFormat(command,player,service);
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), formattedCommand);
+            }
         } else {
             logger.log(Level.INFO,username + " couldn't be found ditching vote!");
         }
