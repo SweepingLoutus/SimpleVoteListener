@@ -30,107 +30,43 @@ public class voteSitesCommand implements CommandExecutor {
         messageFormatter messageFormatter = main.getMessageFormatter();
         if(sender instanceof Player){
             Player player = (Player) sender;
-            if(player.hasPermission("svl.vote.list")){
+            if(player.hasPermission("svl.list")){
                 ConfigurationSection configurationSection = main.getConfig().getConfigurationSection("voteCMD.votesites");
-                Set<String> votesites = configurationSection.getKeys(false);
-                List<TextComponent> messages = new ArrayList<>();
-                for(String votesite: votesites){
-                    String siteName = config.getString("voteCMD.votesites."+ votesite +".name");
-                    String siteURL = config.getString("voteCMD.votesites."+ votesite +".url");
-                    String siteHoverText = config.getString("voteCMD.votesites."+ votesite +".hovertext");
-                    String siteHoverTextFormatted = messageFormatter.messageFormat(siteHoverText, player);
-                    String siteChatText = config.getString("voteCMD.votesites."+ votesite +".chattext");
-                    String siteChatTextFormatted = messageFormatter.messageFormat(siteChatText,player);
+                if(configurationSection!=null){
+                    Set<String> voteSites = configurationSection.getKeys(false);
+                    List<TextComponent> messages = new ArrayList<>();
+                    for(String voteSite: voteSites){
+                        //String siteName = config.getString("voteCMD.votesites."+ votesite +".name");
+                        String siteURL = config.getString("voteCMD.votesites."+ voteSite +".url");
+                        String siteHoverText = config.getString("voteCMD.votesites."+ voteSite +".hovertext");
+                        String siteHoverTextFormatted = messageFormatter.messageFormat(siteHoverText, player);
+                        String siteChatText = config.getString("voteCMD.votesites."+ voteSite +".chattext");
+                        String siteChatTextFormatted = messageFormatter.messageFormat(siteChatText,player);
 
-                    TextComponent message = new TextComponent(TextComponent.fromLegacyText(siteChatTextFormatted));
-                    message.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, siteURL));
-                    message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText(siteHoverTextFormatted)));
+                        TextComponent message = new TextComponent(TextComponent.fromLegacyText(siteChatTextFormatted));
+                        message.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, siteURL));
+                        message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText(siteHoverTextFormatted)));
 
-                    messages.add(message);
+                        messages.add(message);
+                    }
+
+                    String titleLine = messageFormatter.messageFormat(config.getString("voteCMD.titleline"), player);
+                    TextComponent formatTitleLine = new TextComponent(TextComponent.fromLegacyText(titleLine));
+                    player.spigot().sendMessage(formatTitleLine);
+                    for (TextComponent message:messages){
+                        player.spigot().sendMessage(message);
+                    }
+
+                    return true;
+                }else{
+                    logger.log(Level.SEVERE,"Please Add sites to config if you want a working help command!");
                 }
-
-                messageFormatter.voteCmdSender(messages,player);
-
-
-//                Map<String,Object> votesites = configurationSection.getValues(true);
-
-                
-
-//                for(Map.Entry<String,Object> votesite: votesites.entrySet()){
-//
-//                    votesite.getValue()
-//
-//                }
-//                    System.out.println(votesite.getKey() + "keys");
-//                    System.out.println(votesite.getValue().+ "values");
-
-
-//                //site1
-//                String site1Name = config.getString("voteCMD.votesites.votesite1.name");
-//                String site1URL = config.getString("voteCMD.votesites.votesite1.url");
-//                String site1HoverText = config.getString("voteCMD.votesites.votesite1.hovertext");
-//                String site1HoverTextFormatted = messageFormatter.messageFormat(site1HoverText, player);
-//                String site1ChatText = config.getString("voteCMD.votesites.votesite1.chattext");
-//                String site1ChatTextFormatted = messageFormatter.messageFormat(site1ChatText,player);
-//
-//                //site2
-//                String site2Name = config.getString("voteCMD.votesites.votesite2.name");
-//                String site2URL = config.getString("voteCMD.votesites.votesite2.url");
-//                String site2HoverText = config.getString("voteCMD.votesites.votesite2.hovertext");
-//                String site2HoverTextFormatted = messageFormatter.messageFormat(site2HoverText, player);
-//                String site2ChatText = config.getString("voteCMD.votesites.votesite2.chattext");
-//                String site2ChatTextFormatted = messageFormatter.messageFormat(site2ChatText,player);
-//
-//                //site3
-//                String site3Name = config.getString("voteCMD.votesites.votesite3.name");
-//                String site3URL = config.getString("voteCMD.votesites.votesite3.url");
-//                String site3HoverText = config.getString("voteCMD.votesites.votesite3.hovertext");
-//                String site3HoverTextFormatted = messageFormatter.messageFormat(site3HoverText, player);
-//                String site3ChatText = config.getString("voteCMD.votesites.votesite3.chattext");
-//                String site3ChatTextFormatted = messageFormatter.messageFormat(site3ChatText,player);
-//
-//                //site4
-//                String site4Name = config.getString("voteCMD.votesites.votesite4.name");
-//                String site4URL = config.getString("voteCMD.votesites.votesite4.url");
-//                String site4HoverText = config.getString("voteCMD.votesites.votesite4.hovertext");
-//                String site4HoverTextFormatted = messageFormatter.messageFormat(site4HoverText, player);
-//                String site4ChatText = config.getString("voteCMD.votesites.votesite4.chattext");
-//                String site4ChatTextFormatted = messageFormatter.messageFormat(site4ChatText,player);
-//
-//                String titleLine = messageFormatter.messageFormat(config.getString("voteCMD.titleline"), player);
-//
-//                TextComponent message = new TextComponent(TextComponent.fromLegacyText(titleLine));
-//
-//                TextComponent message1 = new TextComponent(TextComponent.fromLegacyText(site1ChatTextFormatted));
-//                message1.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, site1URL));
-//                message1.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText(site1HoverTextFormatted)));
-//
-//                TextComponent message2 = new TextComponent(TextComponent.fromLegacyText(site2ChatTextFormatted));
-//                message2.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, site2URL));
-//                message2.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText(site2HoverTextFormatted)));
-//
-//                TextComponent message3 = new TextComponent(TextComponent.fromLegacyText(site3ChatTextFormatted));
-//                message3.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, site3URL));
-//                message3.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText(site3HoverTextFormatted)));
-//
-//                TextComponent message4 = new TextComponent(TextComponent.fromLegacyText(site4ChatTextFormatted));
-//                message4.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, site4URL));
-//                message4.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText(site4HoverTextFormatted)));
-//
-//                player.spigot().sendMessage(message);
-//                player.spigot().sendMessage(message1);
-//                player.spigot().sendMessage(message2);
-//                player.spigot().sendMessage(message3);
-//                player.spigot().sendMessage(message4);
-//                return true;
             }else{
-                player.sendMessage("Invaild Permission!");
+                player.sendMessage("Invalid Permission!");
             }
-
         }else{
             logger.log(Level.INFO,"You must be a player to run this command!");
         }
         return true;
-
     }
 }

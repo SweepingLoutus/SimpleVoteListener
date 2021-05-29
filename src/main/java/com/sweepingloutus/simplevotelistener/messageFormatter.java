@@ -31,13 +31,4 @@ public class messageFormatter {
         String PlaceHolderAPI = PlaceholderAPI.setPlaceholders(player,message);
         return ChatColor.translateAlternateColorCodes('&', PlaceHolderAPI);
     }
-    public void voteCmdSender(List<TextComponent> messages, Player player){
-        FileConfiguration config = main.getConfig();
-        String titleLine = messageFormat(config.getString("voteCMD.titleline"), player);
-        TextComponent formatTitleLine = new TextComponent(TextComponent.fromLegacyText(titleLine));
-        player.spigot().sendMessage(formatTitleLine);
-        for (TextComponent message:messages){
-            player.spigot().sendMessage(message);
-        }
-    }
 }

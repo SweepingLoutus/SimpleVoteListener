@@ -9,4 +9,6 @@ depend:
 
 commands:
   vote:
-    permission: "svl.vote.list"
+    permission: "svl.list"
+  svlreload:
+    permission: "svl.reload"

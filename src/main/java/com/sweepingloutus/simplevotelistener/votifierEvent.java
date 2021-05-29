@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 public class votifierEvent implements Listener {
 
-    private main main;
+    private final main main;
     public votifierEvent(main mainArg) {
         main = mainArg;
     }
@@ -39,11 +39,15 @@ public class votifierEvent implements Listener {
         if (player != null) {
             String service = vote.getServiceName();
 
-            String userMessageFormatted = messageFormatter.voteMessageFormat(message_to_user,player,service);
-            player.sendMessage(userMessageFormatted);
+            if(message_to_user!=null){
+                String userMessageFormatted = messageFormatter.voteMessageFormat(message_to_user,player,service);
+                player.sendMessage(userMessageFormatted);
+            }
 
-            String broadcastMessageFormatted = messageFormatter.voteMessageFormat(broadcast_message,player,service);
-            Bukkit.broadcastMessage(broadcastMessageFormatted);
+            if(broadcast_message!=null){
+                String broadcastMessageFormatted = messageFormatter.voteMessageFormat(broadcast_message,player,service);
+                Bukkit.broadcastMessage(broadcastMessageFormatted);
+            }
 
             for(String command : commands){
                 String formattedCommand = messageFormatter.placeholderFormat(command,player,service);

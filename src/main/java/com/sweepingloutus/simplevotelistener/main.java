@@ -17,10 +17,13 @@ public class main extends JavaPlugin {
     @Override
     public void onEnable() {
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            int pluginId = 11522;
+            Metrics metrics = new Metrics(this, pluginId);
             saveDefaultConfig();
             getServer().getPluginManager().registerEvents(new votifierEvent(this), this);
             messageFormatter = new messageFormatter(this);
             getCommand("vote").setExecutor(new voteSitesCommand(this));
+            getCommand("svlreload").setExecutor(new reloadCommand(this));
             if(config.getBoolean("vote_reminder")){
                 getServer().getPluginManager().registerEvents(new onPlayerJoin(this), this);
             }
