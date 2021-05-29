@@ -10,7 +10,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class onPlayerJoin implements Listener {
@@ -28,18 +27,25 @@ public class onPlayerJoin implements Listener {
         Logger logger = main.getLogger();
         Player player = event.getPlayer();
 
-        String reminderMessage = config.getString("reminder_message");
-        String formattedReminderMessage = messageFormatter.messageFormat(reminderMessage,player);
+        //Creating the user stuffs
+        if(!player.hasPlayedBefore()){
 
-        TextComponent finalMessage = new TextComponent (TextComponent.fromLegacyText(formattedReminderMessage));
-        finalMessage.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/vote"));
-
-        String reminderMessageHover = main.getConfig().getString("reminder_message_hover");
-        String formattedReminderMessageHover = messageFormatter.messageFormat(reminderMessageHover,player);
-
-        finalMessage.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,new ComponentBuilder(formattedReminderMessageHover).create()));
-        player.spigot().sendMessage(finalMessage);
+        }
 
 
+        //reminder message
+        if(config.getBoolean("vote_reminder")){
+            String reminderMessage = config.getString("reminder_message");
+            String formattedReminderMessage = messageFormatter.messageFormat(reminderMessage,player);
+
+            TextComponent finalMessage = new TextComponent (TextComponent.fromLegacyText(formattedReminderMessage));
+            finalMessage.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/vote"));
+
+            String reminderMessageHover = main.getConfig().getString("reminder_message_hover");
+            String formattedReminderMessageHover = messageFormatter.messageFormat(reminderMessageHover,player);
+
+            finalMessage.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,new ComponentBuilder(formattedReminderMessageHover).create()));
+            player.spigot().sendMessage(finalMessage);
+        }
     }
 }
