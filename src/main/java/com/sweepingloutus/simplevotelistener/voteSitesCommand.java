@@ -56,7 +56,6 @@ public class voteSitesCommand implements CommandExecutor {
                     for (TextComponent message:messages){
                         player.spigot().sendMessage(message);
                     }
-
                     return true;
                 }else{
                     logger.log(Level.SEVERE,"Please Add sites to config if you want a working help command!");

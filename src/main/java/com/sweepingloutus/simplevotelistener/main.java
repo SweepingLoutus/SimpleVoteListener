@@ -12,14 +12,13 @@ public class main extends JavaPlugin {
         return messageFormatter;
     }
 
-    FileConfiguration config = getConfig();
-
     @Override
     public void onEnable() {
+        saveDefaultConfig();
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             int pluginId = 11522;
             Metrics metrics = new Metrics(this, pluginId);
-            saveDefaultConfig();
+            FileConfiguration config = getConfig();
             getServer().getPluginManager().registerEvents(new votifierEvent(this), this);
             messageFormatter = new messageFormatter(this);
             getCommand("vote").setExecutor(new voteSitesCommand(this));
