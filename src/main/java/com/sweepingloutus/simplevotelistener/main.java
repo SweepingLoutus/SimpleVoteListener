@@ -19,7 +19,7 @@ public class main extends JavaPlugin {
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             saveDefaultConfig();
             getServer().getPluginManager().registerEvents(new votifierEvent(this), this);
-            messageFormatter = new messageFormatter();
+            messageFormatter = new messageFormatter(this);
             getCommand("vote").setExecutor(new voteSitesCommand(this));
             if(config.getBoolean("vote_reminder")){
                 getServer().getPluginManager().registerEvents(new onPlayerJoin(this), this);
@@ -28,9 +28,7 @@ public class main extends JavaPlugin {
             throw new RuntimeException("Could not find PlaceholderAPI!! Plugin can not work without it!");
         }
     }
-
     @Override
     public void onDisable() {
-
     }
 }

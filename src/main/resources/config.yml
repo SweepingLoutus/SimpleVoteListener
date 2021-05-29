@@ -11,22 +11,22 @@ broadcast_message: "&l(player) &b&lhas voted for &c&lPicsel&f&lCraft &b&lon (ser
 voteCMD:
   titleline: "&b&lVote Sites!"
   votesites:
-    votesite1:
+    1:
       chattext: "&lVote Site 1 - &b&lMinecraft Server List"
       hovertext: "&l&fClick to Open &b&lMinecraft Server List"
       name: "Minecraft Server List"
       url: "https://minecraft-server-list.com/server/465641/vote/"
-    votesite2:
+    2:
       chattext: "&lVote Site 2 - &b&lMinecraftServers"
       hovertext: "&l&fClick to Open &b&lMinecraftServers"
       name: "MinecraftServers"
       url: "https://minecraftservers.org/vote/591943"
-    votesite3:
+    3:
       chattext: "&lVote Site 3 - &b&lMinecraft Multiplayer"
       hovertext: "&l&fClick to Open &b&lMinecraft Multiplayer"
       name: "Minecraft Multiplayer"
       url: "https://minecraft-mp.com/server/265420/vote/"
-    votesite4:
+    4:
       chattext: "&lVote Site 4 - &b&lPlanet Minecraft"
       hovertext: "&l&fClick to Open &b&lPlanet Minecraft"
       name: "Planet Minecraft"
