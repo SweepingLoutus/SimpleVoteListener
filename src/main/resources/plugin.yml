@@ -1,6 +1,8 @@
 name: SimpleVoteListener
 main: com.sweepingloutus.simplevotelistener.Main
 version: 1.0.0
+author: SweepingLoutus
+
 api-version: "1.16"
 
 depend:
